@@ -1,0 +1,43 @@
+\section{Q1}
+\label{s:Q1}
+
+Consider that the algorithm protocol is as follows:
+
+\[
+    A_t = 
+\begin{cases}
+    0,& w.p \quad p\\
+    1,& w.p \quad 1-p
+\end{cases}
+\]
+
+based on which the environment (adversary) follows the protocol:
+
+\[
+    E_t = 
+\begin{cases}
+    0,& w.p \quad q(p)\\
+    1,& w.p \quad 1-q(p)
+\end{cases}
+\]
+
+where $q(p)$ indicates that the adversary picks its protocol with complete knowledge of our algorithm (and thus the choice of $p$).
+
+Then, the \emph{expected loss} in every turn, denoted ass $\mathbb{E}(\ell)$ is given by:
+
+$$\mathbb{E}(\ell) = q(1-p) + (1-p)q,$$
+$$\implies \mathbb{E}(\ell) = p + q - 2pq, $$
+$$\implies \mathbb{E}(\ell) = p + q + \frac{1}{2}((p-q)^{2} - (p+q)^{2}) \geq  p + q + \frac{-1}{2}((p+q)^{2}),$$
+
+where the equality holds for $p = q$. Constructing a new variable $[0, 2] \ni t \Let p+q$ and maximizing: $t - \frac{t^2}{2}$ yields $t = 1 \implies p+q = 1$.
+
+Thus, 
+$$\mathbb{E}(\ell) \geq 0.5,$$
+
+where the equality holds when $p=q$ and $p+q=1$. Using these two results, we get: $p = 0.5 = q$. In this scenario, the loss per turn is minimized and the reward for the adversary is maximized (any other $q$ for $p=0.5$ yields lesser reward for adversary). 
+
+Hence, over horizon $T$, $\mathbb{E}_{T}(\ell) = \frac{T}{2}$.
+
+
+
+

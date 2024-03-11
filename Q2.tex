@@ -1,0 +1,13 @@
+\section{Q2}
+\label{s:Q2}
+Note: This algorithm has been devised as an update to the \emph{majority algorithm} and not the \emph{weighted majority algorithm} in which case the performance can be improved.
+
+The proposed algorithm is as follows:
+
+
+\begin{itemize}[label=$\circ$, leftmargin = *]
+\item Perform the majority algorithm $m$ times. In these trials, the expected loss $L_T = log_{2}K + 1$.
+\item At the end of these trials, every expert has made $m$ mistakes (since a trial ends only when every expert has made a mistake). 
+\item Thus, the $m+1$ trial can be considered equivalent to the setting with a perfect expert. Hence, the algorithm loss $L_T = O(log_{2}K)$
+\end{itemize}
+Thus, total loss is $L = (m+1)log_{2}K + m$.

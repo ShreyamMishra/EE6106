@@ -1,0 +1,19 @@
+\section{Q4}
+\label{s:Q4}
+$$\mathbb{P}(S_n = k) = \Mycomb{k}p^{k}(1-p)^{k}.$$
+Next, 
+$$S_n > na \implies e^{sS_n} > e^{sna} \quad (s > 0),$$
+$$\implies \mathbb{P}(S_n > na) = \mathbb{P}(e^{sS_n} > e^{sna}) \leq \mathbb{E}[e^{sS_n}]e^{-san} \quad \text{(Chernoff bounding)}$$
+
+Computing the expression on right-hand side:
+$$\mathbb{E}[e^{sS_n}]e^{-san} = e^{-san}\sum_{k = 0}^{n}\Mycomb{k}p^{k}(1-p)^{k}e^{sk} = e^{-san}((1-p) + pe^{s})^{n},$$
+$$
+\implies \mathbb{E}[e^{sS_n}]e^{-san} = e^{-san}\sum_{k = 0}^{n}\Mycomb{k}p^{k}(1-p)^{k}e^{sk} = e^{-san + nlog(pe^s + 1-p)}.
+$$
+
+Defining, $f(s) \Let -san + nlog(pe^s + 1-p)$, we minimize by differentiating the expression with respect to s, To place the tightest bounds:
+
+$$\frac{d}{ds}(f(s)) = -an + \frac{npe^s}{pe^s + 1- p} = 0$$
+$$\implies s^{*} = log(\frac{(1-p)a}{(1-a)p})$$
+$$\implies g(s^{*}) = n(log(\frac{(1-p)}{(1-a)} - alog(\frac{(1-p)a}{(1-a)p}) = -n(alog(\frac{a}{p}) + (1-a)log(\frac{(1-a)}{(1-p)})$$
+$$\implies \mathbb{P}(S_n \geq na) \leq e^{-g(s^{*})}$$

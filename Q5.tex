@@ -1,0 +1,12 @@
+\section{Q5}
+\label{s:Q5}
+$$X \geq x \implies e^{sX} \geq e^{sx} (s >0)$$
+$$\implies \mathbb{P}(X \geq x) = \mathbb{P}(e^{sX} \geq e^{sx}) \leq e^{-sx}\mathbb{E}[e^{sX}]$$
+Defining the right-hand side as follows:
+$$\underset{s}{\text{min}} f(s) \Let e^{-sx}\mathbb{E}[e^{sX}] = e^{-sx}\int_{-\infty}^{\infty}e^{sy}\frac{1}{\sqrt{2\pi}}e^{\frac{-y^2}{2}}dy$$
+
+Computing the definite integral yields:
+$$\underset{s}{\text{min}} f(s) \Let e^{-sx}\mathbb{E}[e^{sX}] = e^{-sx + \frac{s^2}{2}}$$
+
+The minimum occurs at $s=x \implies \mathbb{P}(X \geq x) = \mathbb{P}(e^{sX} \geq e^{sx}) \leq e^{\frac{-x^2}{2}}.$
+

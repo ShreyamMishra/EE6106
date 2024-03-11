@@ -1,0 +1,37 @@
+\section{Q3}
+\label{s:Q3}
+\begin{enumerate}[label=(\alph*)]
+\item 
+The expression for regret is given as:
+\begin{equation}
+\label{s:eq1}
+\bar{R}_n(A) \Let \underset{\bm{y}}{\textrm{sup }}\mathbb{E}[\sum_{t = 1}^{n}y_{A_t, t} - \sum_{t = 1}^{n}\bigl( \underset{1 \leq i \leq K}{\textrm{min}} y_{i,t} \bigr)]
+\end{equation}
+
+The key difference is the minimization that occurs inside the summation, i.e prior to taking the sum $y_{i,t}$. This means that the regret is not with respect to the \emph{best expert} in hindsight, but rather the \emph{best expert} in every turn/instance of predicting a bit.
+
+Clearly:
+$$
+\sum_{t = 1}^{n}\bigl( \underset{1 \leq i \leq K}{\textrm{min}} y_{i,t} \bigr) \leq \bigl( \underset{1 \leq i \leq K}{\textrm{min}}  \sum_{t = 1}^{n}y_{i,t} \bigr)$$
+$$\implies \bar{R}_n(A) \geq R_n(A)$$
+
+\item A qualitative argument is as follows: \\
+
+\eqref{s:eq1} is based on a supremum of the table of costs, $\bm{y}$. Clearly $\bar{R}_n(A)$ is maximized if the sum, $ \sum_{t = 1}^{n}\bigl( \underset{1 \leq i \leq K}{\textrm{min}} y_{i,t} \bigr)$ is minimized. Since, $y_{i,t} \geq 0$  $\forall$ $t$, the supremum will occur when the table of costs is designed such that $\forall$ $t$, $\exists$ $i*$ such that $y_{i*,t} = 0$. Furthermore, $\bar{R}_n(A)$ will be maximized if the loss of every other expert's action is maximized, that is:
+\[
+    y_{A_t,t} = 
+\begin{cases}
+    0,& \textrm{if} \quad A_t = i*\\
+    1,& else \quad 
+\end{cases}
+\] 
+
+Note, the best expert for a turn/instance $t$ can be randomly designed. In such a scenario, the best algorithm would be randomly, uniformly pick any expert $i \in [k]$ (using arguments similar to \ref{s:Q1}). Thus, in such an event, the expected loss per turn is: $1-\frac{1}{k}$ (since $k-1$ experts give loss 1, 1 expert gives loss 0 and the experts are picked randomly, uniformly).
+
+Thus, in such a case, the regret over the horizon is: $\bar{R}_n(A) = n\bigl(1 - \frac{1}{k}\bigr)$. This is the lower-bound, given the best case strategy. Hence, in general:
+$$
+\bar{R}_n(A) \geq n\bigl(1 - \frac{1}{k}\bigr)
+$$
+holds true.
+
+\end{enumerate}

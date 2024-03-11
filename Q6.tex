@@ -1,0 +1,14 @@
+\section{Q6}
+\label{s:Q6}
+By definition of a sub-Gaussian random variable, we may claim:
+$$\mathbb{E}[e^{t(X-\mu)}] \leq e^{\frac{t^2\sigma^{2}}{2}}, \forall t \in \mathbb{R}$$
+
+Taylor expansion of $e^{t(X-\mu)} = 1 + t(X-\mu) + \frac{t^2}{2}((X-\mu))^{2} + o(t^2)$. Using linearity of expectation operator, the right hand side of the inequality is given by:
+$$\mathbb{E}[e^{t(X-\mu)}] = 1 + t\mathbb{E}[(X-\mu)] + \frac{t^2}{2}\mathbb{E}[((X-\mu))^2] + o(t^2).$$
+
+The Taylor expansion of left hand side of the inequality is given by:
+$$e^{\frac{t^2\sigma^{2}}{2}} = 1 + \frac{t^2\sigma^{2}}{2} + o(t^2)$$
+
+Using $\mathbb{E}[(X-\mu)] = $, and comparing the Taylor expansion of both sides of the inequality, we get:
+$$\frac{t^2}{2}\mathbb{E}[((X-\mu))^2] leq \frac{t^2\sigma^{2}}{2} \implies Var[X] \leq \sigma^2$$
+ 
